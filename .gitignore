@@ -1,0 +1,33 @@
+# ---------- служебное ----------
+runtime/
+.downloads/
+logs/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------- окружение и секреты ----------
+.env
+.env.*
+.venv/
+venv/
+.streamlit/secrets.toml
+
+# ---------- пользовательские данные ----------
+chats/
+*.log
+
+# ---------- ОС и редакторы ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+.vscode/
+.idea/
+
+# ---------- временное ----------
+*.tmp
+.tmp/
