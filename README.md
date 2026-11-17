@@ -17,7 +17,7 @@
 | 💬 | **Чат в стиле ChatGPT** — сообщения пользователя справа, ответы ассистента слева, поле ввода закреплено внизу |
 | 🕘 | **История чатов** — каждый диалог сохраняется в `chats/*.json`; список в сайдбаре, загрузка по клику, удаление |
 | 🧠 | **Размышления DeepSeek-R1** — блок `think` спрятан в раскрывающийся аккордеон |
-| 📎 | **Контекст из файлов** — `.txt`, `.py`, `.md`, `.pdf`: текст извлекается и добавляется в системный промпт (простой RAG) |
+| 📎 | **Контекст из файлов** — `.txt`, `.py`, `.md`, `.pdf`: текст извлекается и добавляется в системный промпт |
 | ⬇️ | **Экспорт** — скачивание диалога в Markdown (с `<details>`) или JSON |
 | 🎨 | **Подсветка кода** — блоки с тройными обратными кавычками рендерятся встроенным подсветчиком Streamlit с кнопкой копирования |
 | 🌊 | **Стриминг** — ответ приходит по мере генерации, без ожидания целиком |
@@ -26,10 +26,11 @@
 
 ## Установка
 
-### Вариант 1. Портативный runtime (Windows, без установки Python)
+### Вариант 1. Портативный runtime (Windows)
 
-`runtime/` не хранится в репозитории (он весит ~360 МБ), но собирается одной командой.
-Нужен любой Python 3.10+ и интернет:
+Для обоих вариантов установите [Ollama](https://ollama.com/download), запустите её и скачайте модель командой `ollama pull deepseek-r1:7b`.
+
+`runtime/` собирается локально. Для сборки нужны Python 3.10+ и интернет. После сборки лаунчер использует Python из `runtime/`.
 
 ```bash
 python setup_runtime.py
@@ -42,17 +43,13 @@ pip install --target runtime/Lib/site-packages -r requirements.txt
 ### Вариант 2. Свой Python
 
 ```bash
-# 1. Ollama и модель
-#    https://ollama.com/download
-ollama pull deepseek-r1:7b
-
-# 2. Зависимости
+# 1. Зависимости
 python -m venv .venv
 .venv\Scripts\activate        # Windows
 # source .venv/bin/activate   # macOS / Linux
 pip install -r requirements.txt
 
-# 3. Запуск
+# 2. Запуск
 streamlit run app.py
 ```
 
@@ -75,7 +72,7 @@ streamlit run app.py
 
 ```
 local_ai_chat/
-├── app.py                  # всё приложение: UI, Ollama-клиент, история, RAG, экспорт
+├── app.py                  # всё приложение: UI, Ollama-клиент, история, контекст из файлов, экспорт
 ├── requirements.txt        # streamlit, requests, pypdf
 ├── .streamlit/config.toml  # тёмная тема, порт 8501, без телеметрии
 ├── chats/                  # история чатов (создаётся автоматически, в .gitignore)
@@ -94,7 +91,7 @@ local_ai_chat/
 | Модель по умолчанию | `OLLAMA_MODEL` или селектор в сайдбаре | `deepseek-r1:7b` |
 | Температура | слайдер в сайдбаре | `0.7` |
 | Контекст файлов | `MAX_CONTEXT_CHARS` в `app.py` | `12 000` символов |
-| Окно модели при RAG | `NUM_CTX` в `app.py` | `8192` токена |
+| Окно модели при работе с файлами | `NUM_CTX` в `app.py` | `8192` токена |
 
 ## Если что-то не работает
 
@@ -115,4 +112,4 @@ Issues и pull requests приветствуются. Перед PR запуст
 
 ## Лицензия
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
+Проект распространяется по лицензии [MIT](LICENSE).
