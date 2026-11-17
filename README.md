@@ -1,27 +1,16 @@
-<div align="center">
+![Local AI Chat](docs/portfolio-banner.svg)
 
-# 🖤 Local AI Chat
+# Local AI Chat
 
 **Локальный чат-интерфейс для Ollama в стиле ChatGPT.**
-Приватно, быстро, без интернета — всё считается на вашей машине.
+С локальным сервером Ollama генерация идёт на вашем компьютере. Для первоначальной установки и скачивания модели нужен интернет.
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.38%2B-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Ollama](https://img.shields.io/badge/Ollama-local%20LLM-000000)](https://ollama.com/)
 [![License](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/)
 
-</div>
-
----
-
-## 📸 Скриншот
-
-![Local AI Chat](preview.jpg)
-
----
-
-## ✨ Возможности
+## Возможности
 
 | | Возможность |
 |---|---|
@@ -35,9 +24,7 @@
 | 🔄 | **Горячая перезагрузка моделей** — кнопка обновляет список без перезапуска приложения |
 | ⚙️ | **Настройки** — модель, температура, системный промпт, очистка контекста |
 
----
-
-## 🚀 Установка
+## Установка
 
 ### Вариант 1. Портативный runtime (Windows, без установки Python)
 
@@ -71,9 +58,11 @@ streamlit run app.py
 
 Приложение откроется на <http://localhost:8501>.
 
----
+## Интерфейс
 
-## 🧭 Как пользоваться
+![Окно Local AI Chat](preview.jpg)
+
+## Как пользоваться
 
 1. **Задайте вопрос** в поле внизу — `Enter` отправляет, `Shift+Enter` переносит строку.
 2. **Новый чат** — кнопка «➕ Новый чат»; текущий диалог уже сохранён в `chats/`.
@@ -82,9 +71,7 @@ streamlit run app.py
    текст файла уходит в системный промпт (до 12 000 символов, лимит виден под списком файлов).
 5. **Выгрузить диалог** — кнопки «Скачать .md» / «Скачать .json» в разделе «⬇️ Экспорт».
 
----
-
-## 🗂 Структура проекта
+## Структура проекта
 
 ```
 local_ai_chat/
@@ -99,9 +86,7 @@ local_ai_chat/
 └── setup_runtime.py        # пересоздание локального runtime с нуля
 ```
 
----
-
-## ⚙️ Настройки
+## Настройки
 
 | Параметр | Где менять | По умолчанию |
 |---|---|---|
@@ -111,9 +96,7 @@ local_ai_chat/
 | Контекст файлов | `MAX_CONTEXT_CHARS` в `app.py` | `12 000` символов |
 | Окно модели при RAG | `NUM_CTX` в `app.py` | `8192` токена |
 
----
-
-## 🩺 Если что-то не работает
+## Если что-то не работает
 
 | Симптом | Решение |
 |---|---|
@@ -125,17 +108,11 @@ local_ai_chat/
 
 Логи: `logs/streamlit.err.log`, `logs/ollama.err.log`.
 
----
-
-## 🤝 Участие
+## Участие
 
 Issues и pull requests приветствуются. Перед PR запустите приложение локально и убедитесь,
 что чат, история и загрузка файлов работают.
 
----
-
-## 📄 Лицензия
+## Лицензия
 
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
-
-<div align="center"><sub>Сделано с ❤️ для локального ИИ. Никакие данные не покидают ваш компьютер.</sub></div>
